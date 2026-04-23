@@ -95,21 +95,17 @@ const calendarDays = [
 const reviewItems = [
   {
     title: "Boiler startup checklist",
-    meta: "Shift A | Submitted",
+    meta: "Shift A operator | 11:42",
     status: "Awaiting action",
     action: "Approve",
+    badge: "Selected",
   },
   {
     title: "Cooling line incident",
-    meta: "Open Logsheet | Pending",
+    meta: "Open logsheet | Pending",
     status: "Needs review",
     action: "Open",
-  },
-  {
-    title: "Packaging QA release",
-    meta: "Shift C | Escalated",
-    status: "Escalated",
-    action: "Resolve",
+    badge: "Queued",
   },
 ];
 
@@ -214,15 +210,14 @@ export default function App() {
               </div>
 
               <div className="stat-pills">
-                <span className="dark-pill">3 pending</span>
-                <span>2 pending</span>
+                <span className="dark-pill">2 pending</span>
                 <span>1 escalated</span>
               </div>
 
               <div className="queue-list">
                 {reviewItems.map((item) => (
-                  <div className="queue-item" key={item.title}>
-                    <div>
+                  <div className={`queue-item${item.title === "Boiler startup checklist" ? " active" : ""}`} key={item.title}>
+                    <div className="queue-item-main">
                       <strong>{item.title}</strong>
                       <p>{item.meta}</p>
                     </div>
@@ -230,35 +225,72 @@ export default function App() {
                       <small>{item.status}</small>
                       <span>{item.action}</span>
                     </div>
+                    <em className="queue-item-badge">{item.badge}</em>
                   </div>
                 ))}
               </div>
               <div className="review-detail-card">
                 <div className="review-detail-head">
-                  <strong>Submission details</strong>
+                  <div>
+                    <strong>Submission details</strong>
+                    <p>Active approver panel</p>
+                  </div>
                   <span>Live review</span>
                 </div>
-                <div className="review-detail-grid">
-                  <div className="review-detail-row">
-                    <label>Operator</label>
-                    <strong>Shift A operator</strong>
+
+                <div className="review-active-card">
+                  <div className="review-active-top">
+                    <div>
+                      <strong>Boiler startup checklist</strong>
+                      <p>Reviewer opened the latest operator entry.</p>
+                    </div>
+                    <div className="review-live-status">
+                      <small>Panel open</small>
+                    </div>
                   </div>
-                  <div className="review-detail-row">
-                    <label>Submitted</label>
-                    <strong>22 Apr, 11:42</strong>
+
+                  <div className="review-toolbar" aria-hidden="true">
+                    <button className="review-tool active" type="button">Checklist</button>
+                    <button className="review-tool active" type="button">Decision note</button>
+                    <button className="review-tool" type="button">Approve</button>
                   </div>
-                  <div className="review-detail-row">
-                    <label>Plant</label>
-                    <strong>Plant A</strong>
+
+                  <div className="review-active-grid">
+                    <div className="review-detail-row">
+                      <label>Operator</label>
+                      <strong>Shift A operator</strong>
+                    </div>
+                    <div className="review-detail-row">
+                      <label>Submitted</label>
+                      <strong>22 Apr, 11:42</strong>
+                    </div>
+                    <div className="review-detail-row">
+                      <label>Plant</label>
+                      <strong>Plant A</strong>
+                    </div>
                   </div>
-                  <div className="review-detail-row">
-                    <label>Status</label>
-                    <strong>Pending approval</strong>
+
+                  <div className="review-edit-panel">
+                    <div className="review-edit-head">
+                      <span>Decision note</span>
+                      <em>Saved</em>
+                    </div>
+                    <div className="review-edit-body">
+                      <p>Startup sequence verified. Pressure checks look consistent.</p>
+                    </div>
+                    <div className="review-toggle-row">
+                      <button className="review-toggle active" type="button">
+                        <i />
+                        Ready to approve
+                      </button>
+                      <span className="review-micro-status">Clicked 2 actions</span>
+                    </div>
                   </div>
                 </div>
+
                 <div className="review-actions">
-                  <span>Reject</span>
-                  <span>Approve</span>
+                  <button type="button">Reject</button>
+                  <button className="active" type="button">Approve</button>
                 </div>
               </div>
             </article>
@@ -297,36 +329,60 @@ export default function App() {
                 <p>{solution.description}</p>
                 <div className="solution-visual">
                   {solution.title === "Digital logbook" && (
-                    <div className="visual-window builder-visual">
-                      <div className="visual-window-head">
-                        <span>Builder autosave</span>
-                        <strong>v4 active</strong>
+                    <div className="visual-window builder-visual live-surface">
+                      <div className="visual-window-head product-head">
+                        <div>
+                          <span>Form builder</span>
+                          <strong>Boiler startup checklist</strong>
+                        </div>
+                        <span className="product-version">v4 active</span>
                       </div>
-                      <div className="visual-toolbar">
-                        <span className="active">Section 1</span>
-                        <span>Section 2</span>
-                        <span>Add</span>
+
+                      <div className="visual-toolbar live-toolbar">
+                        <span className="active">General</span>
+                        <span>Checks</span>
+                        <span>Review</span>
                       </div>
-                      <div className="visual-row wide" />
-                      <div className="visual-row mid" />
-                      <div className="logbook-grid">
-                        <div className="visual-card-small" />
-                        <div className="logbook-stack">
-                          <span />
-                          <span />
-                          <span />
+
+                      <div className="builder-live-layout">
+                        <div className="builder-form-stack">
+                          <div className="builder-live-field selected">
+                            <label>Pressure reading</label>
+                            <strong>84 psi</strong>
+                          </div>
+                          <div className="builder-live-field typing">
+                            <label>Fuel valve response</label>
+                            <strong>Normal</strong>
+                          </div>
+                          <div className="builder-live-field saved">
+                            <label>Operator signature</label>
+                            <strong>Captured</strong>
+                          </div>
+                        </div>
+
+                        <div className="builder-side-panel">
+                          <span className="builder-panel-title">Field settings</span>
+                          <div className="builder-side-row">
+                            <small>Status</small>
+                            <strong>Required</strong>
+                          </div>
+                          <div className="builder-side-row">
+                            <small>Sync</small>
+                            <strong>Autosaved</strong>
+                          </div>
+                          <div className="builder-action-chip">Publishing changes</div>
                         </div>
                       </div>
+
                       <div className="logbook-tags">
                         <span>Operator</span>
                         <span>Shift A</span>
-                        <span>Approved</span>
+                        <span>Live edit</span>
                       </div>
-                      <div className="visual-row short" />
                     </div>
                   )}
                   {solution.title === "Scheduling assistant" && (
-                    <div className="visual-window calendar-window">
+                    <div className="visual-window calendar-window live-surface">
                       <div className="calendar-head">
                         <div>
                           <span>Shift calendar</span>
@@ -347,6 +403,28 @@ export default function App() {
                           </div>
                         ))}
                       </div>
+
+                      <div className="schedule-assistant-panel">
+                        <div className="schedule-assistant-head">
+                          <span>Selected shift</span>
+                          <strong>Shift B</strong>
+                        </div>
+                        <div className="schedule-assignment active">
+                          <div>
+                            <small>Assigned operator</small>
+                            <strong>Ritika Sharma</strong>
+                          </div>
+                          <span>Confirmed</span>
+                        </div>
+                        <div className="schedule-assignment">
+                          <div>
+                            <small>Approver</small>
+                            <strong>Plant supervisor</strong>
+                          </div>
+                          <span>Added</span>
+                        </div>
+                      </div>
+
                       <div className="calendar-footer">
                         <span>Shift B selected</span>
                         <strong>14:00</strong>
@@ -354,22 +432,45 @@ export default function App() {
                     </div>
                   )}
                   {solution.title === "Analytical dashboard" && (
-                    <div className="visual-window analytics-window">
-                      <div className="visual-window-head">
-                        <span>Review queue</span>
+                    <div className="visual-window analytics-window live-surface">
+                      <div className="visual-window-head product-head">
+                        <div>
+                          <span>Review center</span>
+                          <strong>Approver dashboard</strong>
+                        </div>
                         <strong>live</strong>
                       </div>
-                      <div className="analytics-bars">
+
+                      <div className="analytics-review-list">
+                        <span className="active">Pending (3)</span>
+                        <span>Approved (12)</span>
+                        <span>Rejected (1)</span>
+                      </div>
+
+                      <div className="review-center-table">
+                        <div className="review-center-row active">
+                          <div>
+                            <strong>Boiler startup checklist</strong>
+                            <small>Shift A operator</small>
+                          </div>
+                          <span>Review</span>
+                        </div>
+                        <div className="review-center-row">
+                          <div>
+                            <strong>Cooling line incident</strong>
+                            <small>Open logsheet</small>
+                          </div>
+                          <span>Open</span>
+                        </div>
+                      </div>
+
+                      <div className="analytics-bars compact-bars">
                         <span className="bar bar-a" />
                         <span className="bar bar-b" />
                         <span className="bar bar-c" />
                         <span className="bar bar-d" />
                       </div>
-                      <div className="analytics-review-list">
-                        <span>Awaiting Action</span>
-                        <span>Approved</span>
-                        <span>Rejected</span>
-                      </div>
+
                       <div className="analytics-mini-stats">
                         <span>91% completion</span>
                         <span>6.2h avg approval</span>
@@ -404,23 +505,67 @@ export default function App() {
 
             <div className="showcase-body">
               <div className="showcase-sidebar">
-                <span>Builder</span>
+                <span className="active">Builder</span>
                 <span>Packages</span>
                 <span>Review</span>
                 <span>History</span>
               </div>
               <div className="showcase-main">
-                <div className="showcase-panel active-panel">
-                  <strong>Builder</strong>
-                  <p>Drag fields, preview changes, and autosave schema updates live.</p>
+                <div className="showcase-shell active-panel">
+                  <div className="showcase-toolbar">
+                    <span className="showcase-chip active">Builder</span>
+                    <span className="showcase-chip">Preview</span>
+                    <span className="showcase-chip">Publish</span>
+                  </div>
+
+                  <div className="showcase-workspace">
+                    <div className="showcase-editor">
+                      <div className="showcase-editor-head">
+                        <strong>Boiler startup checklist</strong>
+                        <span>Draft saved</span>
+                      </div>
+                      <div className="showcase-editor-field selected">
+                        <label>Pressure reading</label>
+                        <strong>84 psi</strong>
+                      </div>
+                      <div className="showcase-editor-field typing">
+                        <label>Fuel valve response</label>
+                        <strong>Normal</strong>
+                      </div>
+                      <div className="showcase-editor-field">
+                        <label>Operator signature</label>
+                        <strong>Captured</strong>
+                      </div>
+                    </div>
+
+                    <div className="showcase-sidecards">
+                      <div className="showcase-mini-card">
+                        <small>Assign package</small>
+                        <strong>Shift B</strong>
+                        <p>Plant A supervisor added as approver.</p>
+                      </div>
+                      <div className="showcase-mini-card active">
+                        <small>Review submission</small>
+                        <strong>Pending approver action</strong>
+                        <p>Decision note opened for the latest entry.</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="showcase-panel">
-                  <strong>Assign package</strong>
-                  <p>Route workflows to shifts and plants through package assignment.</p>
-                </div>
-                <div className="showcase-panel">
-                  <strong>Review submission</strong>
-                  <p>Approve, reject, and track plant records with clear submission states.</p>
+
+                <div className="showcase-footer-panels">
+                  <div className="showcase-panel">
+                    <strong>Assign package</strong>
+                    <p>Route workflows to shifts and plants through package assignment.</p>
+                  </div>
+                  <div className="showcase-panel">
+                    <strong>Review submission</strong>
+                    <p>Approve, reject, and track plant records with clear submission states.</p>
+                  </div>
+                  <div className="showcase-panel">
+                    <strong>History</strong>
+                    <p>Store approved records with timestamps, operators, and plant traceability.</p>
+                  </div>
                 </div>
               </div>
             </div>
