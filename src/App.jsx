@@ -1,12 +1,3 @@
-const companyNames = [
-  "Northsteel",
-  "PlantGrid",
-  "Flowcore",
-  "Axis Works",
-  "Driftline",
-  "Prime Forge",
-];
-
 const solutions = [
   {
     title: "Digital logbook",
@@ -109,6 +100,16 @@ const reviewItems = [
   },
 ];
 
+const marqueeSolutions = [
+  {
+    title: "Logsheet builder",
+    description:
+      "Build incident forms, adjust sections, and preview edits while operators and reviewers see the latest structure.",
+    tone: "blue",
+  },
+  ...solutions,
+];
+
 export default function App() {
   return (
     <div className="page">
@@ -140,13 +141,7 @@ export default function App() {
       <main>
         <section className="hero-shell">
           <div className="hero-copy">
-            <span className="eyebrow">Eqnce for plant operations</span>
             <h1>The better way to run operational workflows.</h1>
-            <p>
-              Build digital logbooks, coordinate scheduling, manage approvals,
-              and monitor plant activity through a calmer operating system for
-              production teams.
-            </p>
 
             <div className="hero-actions">
               <a className="button strong large" href="#contact">
@@ -156,31 +151,17 @@ export default function App() {
                 See how it works
               </a>
             </div>
-
-            <div className="hero-caption">
-              Built around workflow creation, scheduling assistance, and approval
-              visibility.
-            </div>
           </div>
 
           <div className="hero-widgets" aria-hidden="true">
             <article className="widget widget-main widget-tilt">
               <div className="widget-logo-row">
                 <div className="widget-app-icon">EQ</div>
-                <span className="widget-label">Builder</span>
               </div>
 
               <div className="widget-title-block">
                 <strong>Create form version</strong>
-                <p>Build schema, preview sections, and autosave operator-ready forms.</p>
               </div>
-
-              <div className="pill-row">
-                <span>Autosave</span>
-                <span>Preview</span>
-                <span>Versioning</span>
-              </div>
-
               <div className="mini-form builder-session">
                 <div className="builder-cursor" />
                 <div className="mini-field large-field editing">
@@ -206,12 +187,12 @@ export default function App() {
             <article className="widget widget-queue review-session">
               <div className="widget-topline">
                 <span>Review submission</span>
-                <span>Plant A</span>
               </div>
 
               <div className="stat-pills">
                 <span className="dark-pill">2 pending</span>
-                <span>1 escalated</span>
+                <span>1 rejected</span>
+                <span className="approved-pill">1 approved</span>
               </div>
 
               <div className="queue-list">
@@ -233,19 +214,13 @@ export default function App() {
                 <div className="review-detail-head">
                   <div>
                     <strong>Submission details</strong>
-                    <p>Active approver panel</p>
                   </div>
-                  <span>Live review</span>
                 </div>
 
                 <div className="review-active-card">
                   <div className="review-active-top">
                     <div>
                       <strong>Boiler startup checklist</strong>
-                      <p>Reviewer opened the latest operator entry.</p>
-                    </div>
-                    <div className="review-live-status">
-                      <small>Panel open</small>
                     </div>
                   </div>
 
@@ -297,87 +272,158 @@ export default function App() {
           </div>
         </section>
 
-        <section className="logo-strip" id="company">
-          <p>Trusted by teams modernizing production workflows and digital record keeping.</p>
-          <div className="logo-marquee">
-            <div className="logo-track">
-              {[...companyNames, ...companyNames].map((name, index) => (
-                <span key={`${name}-${index}`}>{name}</span>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="solutions-shell" id="solutions">
+        <section className="solutions-shell screen-section" id="solutions">
           <div className="section-copy">
-            <span className="eyebrow">Solutions</span>
             <h2>Purpose-built modules for the work Eqnce handles best.</h2>
-            <p>
-              A simple architecture for digital logbooks, scheduling assistance,
-              and analytical dashboards with space for richer workflows over
-              time.
-            </p>
           </div>
 
-          <div className="solutions-grid">
-            {solutions.map((solution) => (
-              <article className={`solution-card ${solution.tone}`} key={solution.title}>
-                <div className="solution-meta">
-                  <span className="meta-line" />
-                </div>
+          <div className="solutions-marquee" aria-hidden="true">
+            <div className="solutions-track">
+              {[...marqueeSolutions, ...marqueeSolutions].map((solution, index) => (
+                <article className={`solution-card marquee-card ${solution.tone}`} key={`${solution.title}-${index}`}>
                 <h3>{solution.title}</h3>
-                <p>{solution.description}</p>
                 <div className="solution-visual">
-                  {solution.title === "Digital logbook" && (
-                    <div className="visual-window builder-visual live-surface">
+                  {solution.title === "Logsheet builder" && (
+                    <div className="visual-window logsheet-builder-window live-surface">
                       <div className="visual-window-head product-head">
                         <div>
                           <span>Form builder</span>
-                          <strong>Boiler startup checklist</strong>
+                          <strong>Incident response form</strong>
                         </div>
-                        <span className="product-version">v4 active</span>
+                        <span className="product-version">live edit</span>
                       </div>
 
-                      <div className="visual-toolbar live-toolbar">
-                        <span className="active">General</span>
-                        <span>Checks</span>
-                        <span>Review</span>
+                      <div className="logsheet-builder-topbar">
+                        <span className="active">Section 1</span>
+                        <span>Add section</span>
                       </div>
 
-                      <div className="builder-live-layout">
-                        <div className="builder-form-stack">
-                          <div className="builder-live-field selected">
-                            <label>Pressure reading</label>
-                            <strong>84 psi</strong>
+                      <div className="logsheet-builder-layout">
+                        <div className="logsheet-builder-sidebar">
+                          <span className="active">Fields</span>
+                          <span>Sections</span>
+                          <span>Preview</span>
+                        </div>
+
+                        <div className="logsheet-builder-canvas">
+                          <div className="visual-toolbar live-toolbar logsheet-builder-toolbar">
+                            <span className="active">Editing</span>
+                            <span>Live</span>
                           </div>
-                          <div className="builder-live-field typing">
-                            <label>Fuel valve response</label>
-                            <strong>Normal</strong>
+
+                          <div className="logsheet-change-list">
+                            <div className="logsheet-change-card active">
+                              <i className="logsheet-grip" />
+                              <div className="logsheet-change-copy">
+                                <label>Change 01</label>
+                                <strong>Text field added</strong>
+                              </div>
+                            </div>
+                            <div className="logsheet-change-card typing">
+                              <i className="logsheet-grip" />
+                              <div className="logsheet-change-copy">
+                                <label>Change 02</label>
+                                <strong>Email field reordered</strong>
+                              </div>
+                            </div>
                           </div>
-                          <div className="builder-live-field saved">
-                            <label>Operator signature</label>
-                            <strong>Captured</strong>
+
+                          <div className="logsheet-builder-cursor" />
+                        </div>
+
+                        <div className="logsheet-builder-settings">
+                          <small>Section settings</small>
+                          <strong>Selected</strong>
+                          <span>Name</span>
+                          <em>Section 1</em>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  {solution.title === "Digital logbook" && (
+                    <div className="visual-window package-builder-window live-surface">
+                      <div className="visual-window-head product-head package-builder-head">
+                        <div>
+                          <span>Build logbook</span>
+                          <strong>Package A</strong>
+                        </div>
+                        <span className="product-version">2 items</span>
+                      </div>
+
+                      <div className="package-builder-topbar">
+                        <span className="active">Build Logbook</span>
+                        <span>Create Workflow</span>
+                      </div>
+
+                      <div className="package-builder-layout">
+                        <div className="package-builder-panel">
+                          <div className="package-panel-head">
+                            <strong>Available forms</strong>
+                            <span>3 forms</span>
+                          </div>
+                          <div className="package-form-list">
+                            <div className="package-form-row active">
+                              <label>A003</label>
+                              <strong>Form - 3</strong>
+                              <em>Add form</em>
+                            </div>
+                            <div className="package-form-row">
+                              <label>A002</label>
+                              <strong>Form - 2</strong>
+                              <em>Add form</em>
+                            </div>
+                            <div className="package-form-row">
+                              <label>A001</label>
+                              <strong>Form - 1</strong>
+                              <em>Add form</em>
+                            </div>
+                          </div>
+
+                          <div className="package-pagination">
+                            <span className="ghost">Prev</span>
+                            <span className="active">1</span>
+                            <span className="ghost">Next</span>
                           </div>
                         </div>
 
-                        <div className="builder-side-panel">
-                          <span className="builder-panel-title">Field settings</span>
-                          <div className="builder-side-row">
-                            <small>Status</small>
-                            <strong>Required</strong>
+                        <div className="package-builder-panel">
+                          <div className="package-panel-head">
+                            <strong>Package sequence</strong>
+                            <span>2 items</span>
                           </div>
-                          <div className="builder-side-row">
-                            <small>Sync</small>
-                            <strong>Autosaved</strong>
+                          <div className="package-sequence-list">
+                            <div className="package-sequence-card active">
+                              <i />
+                              <div>
+                                <strong>A003 - Form - 3</strong>
+                                <small>Frequency 1</small>
+                              </div>
+                              <em>Remove</em>
+                            </div>
+                            <div className="package-sequence-card">
+                              <i />
+                              <div>
+                                <strong>A002 - Form - 2</strong>
+                                <small>Frequency 1</small>
+                              </div>
+                              <em>Remove</em>
+                            </div>
                           </div>
-                          <div className="builder-action-chip">Publishing changes</div>
+
+                          <div className="package-save-bar">
+                            <span>New package • 2 items</span>
+                            <button type="button">Save Package</button>
+                          </div>
                         </div>
                       </div>
 
-                      <div className="logbook-tags">
-                        <span>Operator</span>
-                        <span>Shift A</span>
-                        <span>Live edit</span>
+                      <div className="package-saved-strip">
+                        <span>Saved packages</span>
+                        <div className="package-saved-row">
+                          <strong>P0001</strong>
+                          <em>Package A</em>
+                          <span>Assign</span>
+                        </div>
                       </div>
                     </div>
                   )}
@@ -482,18 +528,15 @@ export default function App() {
                     </div>
                   )}
                 </div>
-              </article>
-            ))}
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
-        <section className="how-shell" id="how-it-works">
+        <section className="how-shell screen-section" id="how-it-works">
           <div className="section-copy">
-            <span className="eyebrow">How it works</span>
             <h2>How workflow creation moves through the plant.</h2>
-            <p>
-              Eqnce brings builder, package assignment, review submission, and plant workflow history into one schema-driven flow.
-            </p>
           </div>
 
           <div className="workflow-showcase" aria-hidden="true">
@@ -572,9 +615,8 @@ export default function App() {
           </div>
         </section>
 
-        <section className="testimonials-shell">
+        <section className="testimonials-shell screen-section" id="company">
           <div className="section-copy">
-            <span className="eyebrow">Testimonials & company</span>
             <h2>Visual proof that the product can scale across teams and plants.</h2>
           </div>
 
@@ -591,14 +633,9 @@ export default function App() {
           </div>
         </section>
 
-        <section className="future-shell" id="future">
+        <section className="future-shell screen-section" id="future">
           <div className="section-copy">
-            <span className="eyebrow">In future</span>
             <h2>The roadmap extends beyond live workflows.</h2>
-            <p>
-              Eqnce can grow into reporting, history access, audit support, and
-              ERP connectivity without changing the overall product shape.
-            </p>
           </div>
 
           <div className="future-grid">
@@ -621,7 +658,6 @@ export default function App() {
 
         <section className="cta-shell" id="contact">
           <div>
-            <span className="eyebrow">Ready to launch</span>
             <h2>Bring Eqnce to the front of your plant workflow.</h2>
           </div>
 
