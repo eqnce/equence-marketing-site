@@ -104,11 +104,85 @@ const marqueeSolutions = [
   {
     title: "Logsheet builder",
     description:
-      "Build incident forms, adjust sections, and preview edits while operators and reviewers see the latest structure.",
+      "Build and adjust forms fast with less setup copy on screen.",
     tone: "blue",
+    icon: "builder",
+    points: [
+      { icon: "stack", label: "Sections" },
+      { icon: "spark", label: "Live edits" },
+      { icon: "eye", label: "Preview" },
+    ],
+  },
+  {
+    title: "Notifications",
+    description:
+      "Push the next action to supervisors without crowding the dashboard.",
+    tone: "gray",
+    icon: "bell",
+    points: [
+      { icon: "bell", label: "Alerts" },
+      { icon: "clock", label: "Pending" },
+      { icon: "users", label: "Shift team" },
+    ],
+  },
+  {
+    title: "Logsheet submission",
+    description:
+      "Guide operators to the next form with clear status cues.",
+    tone: "blue",
+    icon: "send",
+    points: [
+      { icon: "send", label: "Submit" },
+      { icon: "check", label: "Review" },
+      { icon: "route", label: "Next up" },
+    ],
+  },
+  {
+    title: "Shift status",
+    description:
+      "Scan shift completion and exceptions from one compact view.",
+    tone: "slate",
+    icon: "chart",
+    points: [
+      { icon: "chart", label: "Trend" },
+      { icon: "clock", label: "History" },
+      { icon: "check", label: "Done" },
+    ],
   },
   ...solutions,
 ];
+
+function UiIcon({ name }) {
+  const icons = {
+    builder: (
+      <path d="M6 17.5V7.75a1.75 1.75 0 0 1 1.75-1.75h8.5A1.75 1.75 0 0 1 18 7.75v9.75M9 10h6M9 13h4M8 18h8" />
+    ),
+    bell: (
+      <path d="M12 18a2.2 2.2 0 0 0 2-1.3M7.25 15.5h9.5l-1.1-1.45V10a3.65 3.65 0 1 0-7.3 0v4.05L7.25 15.5Z" />
+    ),
+    send: <path d="m5 12 13-6-3.6 12-3.1-4.15L5 12Zm6.3 1.85L18 6" />,
+    chart: <path d="M7 16.5V12m5 4.5V9m5 7.5V6.5M5.5 18h13" />,
+    stack: <path d="m12 6 6 3-6 3-6-3 6-3Zm6 6-6 3-6-3m12 3-6 3-6-3" />,
+    spark: <path d="m12 5 1.2 3.3L16.5 9l-3.3 1.2L12 13.5l-1.2-3.3L7.5 9l3.3-1.2L12 5Z" />,
+    eye: <path d="M4.75 12S7.4 7.75 12 7.75 19.25 12 19.25 12 16.6 16.25 12 16.25 4.75 12 4.75 12Zm7 0a1.25 1.25 0 1 0 2.5 0 1.25 1.25 0 0 0-2.5 0Z" />,
+    clock: <path d="M12 6.25a5.75 5.75 0 1 1 0 11.5 5.75 5.75 0 0 1 0-11.5Zm0 2.25V12l2.25 1.4" />,
+    users: <path d="M9.25 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm5.5-.5a1.75 1.75 0 1 0 0-3.5M5.75 16c.5-1.8 2.1-2.75 3.5-2.75s3 .95 3.5 2.75m1.25 0c.28-1.1 1.16-1.85 2.25-2.1" />,
+    check: <path d="m7 12.4 3.05 3.1L17 8.7" />,
+    route: <path d="M6.5 8.25h5.75a2 2 0 1 1 0 4H10a2 2 0 1 0 0 4h7.5m-2.5-2.5 2.5 2.5-2.5 2.5" />,
+    logout: <path d="M10 7.25V6.5A1.5 1.5 0 0 1 11.5 5h4A1.5 1.5 0 0 1 17 6.5v11a1.5 1.5 0 0 1-1.5 1.5h-4A1.5 1.5 0 0 1 10 17.5v-.75M13.5 12H6m0 0 2.5-2.5M6 12l2.5 2.5" />,
+    list: <path d="M8 8.25h8M8 12h8M8 15.75h8M5.25 8.25h.01M5.25 12h.01M5.25 15.75h.01" />,
+    plus: <path d="M12 7v10M7 12h10" />,
+    minus: <path d="M7 12h10" />,
+    calendar: <path d="M7.5 6v2M16.5 6v2M6.5 9h11M7.5 12h3m-3 3h5m-6-9h11a1 1 0 0 1 1 1v9.5a1 1 0 0 1-1 1h-11a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Z" />,
+    history: <path d="M7 8.5V5.75M7 5.75H4.25M7 5.75 9 7.8M7.3 9A5.75 5.75 0 1 1 6.25 12M12 9v3l2 1.25" />,
+  };
+
+  return (
+    <svg className="ui-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      {icons[name]}
+    </svg>
+  );
+}
 
 export default function App() {
   return (
@@ -281,7 +355,23 @@ export default function App() {
             <div className="solutions-track">
               {[...marqueeSolutions, ...marqueeSolutions].map((solution, index) => (
                 <article className={`solution-card marquee-card ${solution.tone}`} key={`${solution.title}-${index}`}>
-                <h3>{solution.title}</h3>
+                <div className="solution-card-head">
+                  <span className="solution-icon-badge">
+                    <UiIcon name={solution.icon || "chart"} />
+                  </span>
+                  <div className="solution-copy">
+                    <h3>{solution.title}</h3>
+                  </div>
+                </div>
+                {solution.points && (
+                  <div className="solution-icon-strip" aria-label={`${solution.title} highlights`}>
+                    {solution.points.map((point) => (
+                      <span className="solution-icon-chip" key={`${solution.title}-${point.label}`} aria-label={point.label} title={point.label}>
+                        <UiIcon name={point.icon} />
+                      </span>
+                    ))}
+                  </div>
+                )}
                 <div className="solution-visual">
                   {solution.title === "Logsheet builder" && (
                     <div className="visual-window logsheet-builder-window live-surface">
@@ -352,7 +442,9 @@ export default function App() {
 
                       <div className="package-builder-topbar">
                         <span className="active">Build Logbook</span>
-                        <span>Create Workflow</span>
+                        <span aria-label="Create workflow" title="Create workflow">
+                          <UiIcon name="plus" />
+                        </span>
                       </div>
 
                       <div className="package-builder-layout">
@@ -364,18 +456,24 @@ export default function App() {
                           <div className="package-form-list">
                             <div className="package-form-row active">
                               <label>A003</label>
-                              <strong>Form - 3</strong>
-                              <em>Add form</em>
+                              <strong>Boiler startup checklist</strong>
+                              <em aria-label="Add form" title="Add form">
+                                <UiIcon name="plus" />
+                              </em>
                             </div>
                             <div className="package-form-row">
                               <label>A002</label>
-                              <strong>Form - 2</strong>
-                              <em>Add form</em>
+                              <strong>Cooling line inspection</strong>
+                              <em aria-label="Add form" title="Add form">
+                                <UiIcon name="plus" />
+                              </em>
                             </div>
                             <div className="package-form-row">
                               <label>A001</label>
-                              <strong>Form - 1</strong>
-                              <em>Add form</em>
+                              <strong>Shift handover note</strong>
+                              <em aria-label="Add form" title="Add form">
+                                <UiIcon name="plus" />
+                              </em>
                             </div>
                           </div>
 
@@ -395,24 +493,28 @@ export default function App() {
                             <div className="package-sequence-card active">
                               <i />
                               <div>
-                                <strong>A003 - Form - 3</strong>
-                                <small>Frequency 1</small>
+                                <strong>A003 - Boiler startup</strong>
+                                <small>Each shift</small>
                               </div>
-                              <em>Remove</em>
+                              <em aria-label="Remove form" title="Remove form">
+                                <UiIcon name="minus" />
+                              </em>
                             </div>
                             <div className="package-sequence-card">
                               <i />
                               <div>
-                                <strong>A002 - Form - 2</strong>
-                                <small>Frequency 1</small>
+                                <strong>A002 - Cooling line</strong>
+                                <small>Each shift</small>
                               </div>
-                              <em>Remove</em>
+                              <em aria-label="Remove form" title="Remove form">
+                                <UiIcon name="minus" />
+                              </em>
                             </div>
                           </div>
 
                           <div className="package-save-bar">
                             <span>New package • 2 items</span>
-                            <button type="button">Save Package</button>
+                            <button type="button">Save</button>
                           </div>
                         </div>
                       </div>
@@ -422,9 +524,168 @@ export default function App() {
                         <div className="package-saved-row">
                           <strong>P0001</strong>
                           <em>Package A</em>
-                          <span>Assign</span>
+                          <span>Use</span>
                         </div>
                       </div>
+                    </div>
+                  )}
+                  {solution.title === "Shift status" && (
+                    <div className="visual-window shift-status-window live-surface">
+                      <div className="visual-window-head product-head">
+                        <div>
+                          <span>Past shifts</span>
+                          <strong>Past Shifts Summary</strong>
+                        </div>
+                        <span className="product-version">supervisor</span>
+                      </div>
+
+                      <div className="shift-status-metrics">
+                        <div className="shift-metric-card history">
+                          <small>History</small>
+                          <strong>1</strong>
+                          <span>Total shifts</span>
+                        </div>
+                        <div className="shift-metric-card pending">
+                          <small>Awaiting</small>
+                          <strong>0</strong>
+                          <span>Pending</span>
+                        </div>
+                        <div className="shift-metric-card approved">
+                          <small>Completed</small>
+                          <strong>0</strong>
+                          <span>Approved</span>
+                        </div>
+                        <div className="shift-metric-card rejected">
+                          <small>Needs fix</small>
+                          <strong>0</strong>
+                          <span>Rejected</span>
+                        </div>
+                      </div>
+
+                      <div className="shift-status-toolbar">
+                        <div className="shift-filter-group">
+                          <span className="active">All</span>
+                          <span>Pending</span>
+                          <span>Approved</span>
+                          <span>Rejected</span>
+                        </div>
+                        <div className="shift-search-chip">Search shifts or plants</div>
+                      </div>
+
+                      <div className="shift-status-table">
+                        <div className="shift-table-head">
+                          <span>Shift date</span>
+                          <span>Shift type</span>
+                          <span>Plant</span>
+                          <span>Status</span>
+                        </div>
+                        <div className="shift-table-row">
+                          <div>
+                            <strong>23/04/2026</strong>
+                            <small>22:00 → 06:00</small>
+                          </div>
+                          <strong>P3</strong>
+                          <strong>Main Plant</strong>
+                          <em>Pending</em>
+                        </div>
+                      </div>
+
+                      <div className="shift-status-cursor" />
+                    </div>
+                  )}
+                  {solution.title === "Notifications" && (
+                    <div className="visual-window notifications-window live-surface">
+                      <div className="notifications-topbar">
+                        <div className="notifications-brand">eqnce</div>
+                        <div className="notifications-top-actions">
+                          <span className="notifications-bell-chip active">Alerts</span>
+                          <span className="notifications-user-chip">Supervisor</span>
+                        </div>
+                      </div>
+
+                      <div className="notifications-overview">
+                        <div>
+                          <span>Current Shift Overview</span>
+                          <strong>Shift 1</strong>
+                        </div>
+                        <em>70% complete</em>
+                      </div>
+
+                      <div className="notifications-popover">
+                        <div className="notifications-popover-head">
+                          <strong>Notifications</strong>
+                          <span>2 new</span>
+                        </div>
+
+                        <div className="notifications-list">
+                          <div className="notification-item active">
+                            <label>Pending review</label>
+                            <strong>Boiler startup checklist needs supervisor action.</strong>
+                            <em>Open review</em>
+                          </div>
+                          <div className="notification-item">
+                            <label>Escalation</label>
+                            <strong>Cooling line incident was reassigned to the shift supervisor.</strong>
+                            <em>Open alert</em>
+                          </div>
+                        </div>
+
+                        <button className="notifications-cta" type="button">Go to Dashboard</button>
+                      </div>
+
+                      <div className="notifications-cursor" />
+                    </div>
+                  )}
+                  {solution.title === "Logsheet submission" && (
+                    <div className="visual-window submission-window live-surface">
+                      <div className="visual-window-head product-head">
+                        <div>
+                          <span>Current shift</span>
+                          <strong>Current Shift Forms</strong>
+                        </div>
+                        <span className="product-version">2 active</span>
+                      </div>
+
+                      <div className="submission-overview">
+                        <div className="submission-overview-card">
+                          <small>Shift</small>
+                          <strong>Shift 1</strong>
+                        </div>
+                        <div className="submission-overview-card">
+                          <small>Plant</small>
+                          <strong>Main Plant</strong>
+                        </div>
+                        <div className="submission-overview-card progress">
+                          <small>Completion</small>
+                          <strong>75%</strong>
+                        </div>
+                      </div>
+
+                      <div className="submission-form-list">
+                        <div className="submission-form-card active">
+                          <div>
+                            <label>Open form</label>
+                            <strong>Boiler startup checklist</strong>
+                            <small>Main Plant • Shift 1</small>
+                          </div>
+                          <em>Fill now</em>
+                        </div>
+                        <div className="submission-form-card">
+                          <div>
+                            <label>Resume draft</label>
+                            <strong>Cooling line inspection</strong>
+                            <small>Main Plant • Shift 1</small>
+                          </div>
+                          <em>Resume</em>
+                        </div>
+                      </div>
+
+                      <div className="submission-action-bar">
+                        <span>2 forms assigned in the current shift</span>
+                        <button type="button">Submit logsheet</button>
+                      </div>
+
+                      <div className="submission-cursor" />
                     </div>
                   )}
                   {solution.title === "Scheduling assistant" && (
@@ -539,75 +800,196 @@ export default function App() {
             <h2>How workflow creation moves through the plant.</h2>
           </div>
 
-          <div className="workflow-showcase" aria-hidden="true">
-            <div className="showcase-head">
-              <span className="window-dot" />
-              <span className="window-dot" />
-              <span className="window-dot" />
+          <div className="workflow-showcase workflow-hub" aria-hidden="true">
+            <div className="workflow-hub-topbar">
+              <div className="workflow-brand-row">
+                <img className="workflow-brand-mark" src="/EQNCE 1.svg" alt="" />
+              </div>
+              <div className="workflow-user-row">
+                <span className="workflow-bell"><UiIcon name="bell" /></span>
+                <div className="workflow-user-pill">
+                  <strong>Plant head</strong>
+                  <span>Line 2 live</span>
+                </div>
+                <div className="workflow-logout-pill">
+                  <UiIcon name="logout" />
+                  Exit
+                </div>
+              </div>
             </div>
 
-            <div className="showcase-body">
-              <div className="showcase-sidebar">
-                <span className="active">Builder</span>
-                <span>Packages</span>
-                <span>Review</span>
-                <span>History</span>
+            <div className="workflow-action-grid">
+              <article className="workflow-action-card active">
+                <span className="workflow-action-icon"><UiIcon name="list" /></span>
+                <div>
+                  <strong>Logbook</strong>
+                </div>
+                <em>Open</em>
+              </article>
+              <article className="workflow-action-card">
+                <span className="workflow-action-icon"><UiIcon name="plus" /></span>
+                <div>
+                  <strong>Create</strong>
+                </div>
+                <em>Open</em>
+              </article>
+              <article className="workflow-action-card">
+                <span className="workflow-action-icon"><UiIcon name="calendar" /></span>
+                <div>
+                  <strong>Shifts</strong>
+                </div>
+                <em>Open</em>
+              </article>
+              <article className="workflow-action-card live">
+                <span className="workflow-action-icon"><UiIcon name="check" /></span>
+                <div>
+                  <strong>Reviews</strong>
+                </div>
+                <em>Live</em>
+              </article>
+              <article className="workflow-action-card">
+                <span className="workflow-action-icon"><UiIcon name="history" /></span>
+                <div>
+                  <strong>History</strong>
+                </div>
+                <em>Open</em>
+              </article>
+            </div>
+
+            <div className="workflow-review-panel">
+              <div className="workflow-panel-header">
+                <div className="workflow-panel-title">
+                  <span>Review center</span>
+                  <strong>Live approvals</strong>
+                </div>
+
+                <div className="workflow-filter-strip">
+                  <span className="workflow-filter active">All</span>
+                  <span className="workflow-filter">2 pending</span>
+                  <span className="workflow-filter approved">6 done</span>
+                  <span className="workflow-filter rejected">1 fix</span>
+                </div>
               </div>
-              <div className="showcase-main">
-                <div className="showcase-shell active-panel">
-                  <div className="showcase-toolbar">
-                    <span className="showcase-chip active">Builder</span>
-                    <span className="showcase-chip">Preview</span>
-                    <span className="showcase-chip">Publish</span>
+
+              <div className="workflow-review-stats">
+                <div className="workflow-review-stat pending">
+                  <small>Queue</small>
+                  <strong>2</strong>
+                  <span>Awaiting</span>
+                </div>
+                <div className="workflow-review-stat approved">
+                  <small>Done</small>
+                  <strong>6</strong>
+                  <span>This shift</span>
+                </div>
+                <div className="workflow-review-stat rejected">
+                  <small>Fixes</small>
+                  <strong>1</strong>
+                  <span>Returned</span>
+                </div>
+              </div>
+
+              <div className="workflow-review-table">
+                <div className="workflow-review-head">
+                  <span>Form</span>
+                  <span>Owner</span>
+                  <span>Time</span>
+                  <span>State</span>
+                  <span>Open</span>
+                </div>
+
+                <div className="workflow-review-row active">
+                  <strong>Boiler startup</strong>
+                  <span>Ritika Sharma</span>
+                  <span>11:42</span>
+                  <span className="workflow-status-pill pending">Pending</span>
+                  <button type="button">Review</button>
+                </div>
+
+                <div className="workflow-review-row">
+                  <strong>Cooling line</strong>
+                  <span>Vikram Rao</span>
+                  <span>10:08</span>
+                  <span className="workflow-status-pill approved">Approved</span>
+                  <button type="button">Open</button>
+                </div>
+              </div>
+
+              <div className="workflow-demo-cursor workflow-demo-cursor-review" />
+            </div>
+
+            <div className="workflow-lower-grid">
+              <div className="workflow-current-forms">
+                <div className="workflow-panel-header compact">
+                  <div className="workflow-panel-title">
+                    <span>Current shift</span>
+                    <strong>Forms now</strong>
                   </div>
+                  <div className="workflow-mini-chip">Shift 1</div>
+                </div>
 
-                  <div className="showcase-workspace">
-                    <div className="showcase-editor">
-                      <div className="showcase-editor-head">
-                        <strong>Boiler startup checklist</strong>
-                        <span>Draft saved</span>
-                      </div>
-                      <div className="showcase-editor-field selected">
-                        <label>Pressure reading</label>
-                        <strong>84 psi</strong>
-                      </div>
-                      <div className="showcase-editor-field typing">
-                        <label>Fuel valve response</label>
-                        <strong>Normal</strong>
-                      </div>
-                      <div className="showcase-editor-field">
-                        <label>Operator signature</label>
-                        <strong>Captured</strong>
-                      </div>
+                <div className="workflow-form-list">
+                  <article className="workflow-form-card active">
+                    <div>
+                      <strong>Boiler startup</strong>
+                      <p>Main Plant | L2</p>
                     </div>
+                    <span>Start</span>
+                  </article>
+                  <article className="workflow-form-card">
+                    <div>
+                      <strong>Cooling line</strong>
+                      <p>Main Plant | QA</p>
+                    </div>
+                    <span>Resume</span>
+                  </article>
+                </div>
 
-                    <div className="showcase-sidecards">
-                      <div className="showcase-mini-card">
-                        <small>Assign package</small>
-                        <strong>Shift B</strong>
-                        <p>Plant A supervisor added as approver.</p>
-                      </div>
-                      <div className="showcase-mini-card active">
-                        <small>Review submission</small>
-                        <strong>Pending approver action</strong>
-                        <p>Decision note opened for the latest entry.</p>
-                      </div>
-                    </div>
+                <div className="workflow-demo-cursor workflow-demo-cursor-forms" />
+              </div>
+
+              <div className="workflow-history-panel">
+                <div className="workflow-panel-header compact">
+                  <div className="workflow-panel-title">
+                    <span>Past shifts</span>
+                    <strong>Recent history</strong>
+                  </div>
+                  <div className="workflow-history-link">Open</div>
+                </div>
+
+                <div className="workflow-history-stats">
+                  <div className="workflow-history-stat">
+                    <small>Total</small>
+                    <strong>12</strong>
+                    <span>Shifts</span>
+                  </div>
+                  <div className="workflow-history-stat pending">
+                    <small>Pending</small>
+                    <strong>2</strong>
+                    <span>Open</span>
+                  </div>
+                  <div className="workflow-history-stat approved">
+                    <small>Done</small>
+                    <strong>9</strong>
+                    <span>Approved</span>
                   </div>
                 </div>
 
-                <div className="showcase-footer-panels">
-                  <div className="showcase-panel">
-                    <strong>Assign package</strong>
-                    <p>Route workflows to shifts and plants through package assignment.</p>
+                <div className="workflow-history-list">
+                  <div className="workflow-history-row">
+                    <strong>23 Apr 2026</strong>
+                    <span>Shift B</span>
+                    <em>Approved</em>
                   </div>
-                  <div className="showcase-panel">
-                    <strong>Review submission</strong>
-                    <p>Approve, reject, and track plant records with clear submission states.</p>
+                  <div className="workflow-history-row live">
+                    <strong>22 Apr 2026</strong>
+                    <span>Shift A</span>
+                    <em>Pending note</em>
                   </div>
-                  <div className="showcase-panel">
-                    <strong>History</strong>
-                    <p>Store approved records with timestamps, operators, and plant traceability.</p>
+                  <div className="workflow-history-row">
+                    <strong>21 Apr 2026</strong>
+                    <span>Shift C</span>
+                    <em>Archived</em>
                   </div>
                 </div>
               </div>
