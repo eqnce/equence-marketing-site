@@ -345,7 +345,7 @@ function BrandAffiliation() {
       
       <div className="affiliation-footer-text">
         <p className="primary-text">
-          Eqnce is a wholly owned subsidiary of <strong>Monx</strong>.
+          Eqnce is a wholly owned subsidiary of <strong>Monx Technology Pvt Ltd</strong>.
         </p>
       </div>
     </section>
