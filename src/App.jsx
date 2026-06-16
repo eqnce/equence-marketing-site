@@ -345,7 +345,7 @@ function BrandAffiliation() {
       
       <div className="affiliation-footer-text">
         <p className="primary-text">
-          Eqnce is a wholly owned subsidiary of <strong>Monx Technology Pvt Ltd</strong>.
+          Eqnce is a product owned by <strong>Monx Technology Pvt Ltd</strong>.
         </p>
       </div>
     </section>
@@ -424,19 +424,6 @@ export default function App() {
               </a>
             </div>
 
-            {/* Social proof strip */}
-            <div className="hero-proof">
-              <div className="proof-avatars">
-                {["J", "R", "A", "K", "L"].map((l, i) => (
-                  <span key={i} className="proof-avatar" style={{ zIndex: 5 - i }}>
-                    {l}
-                  </span>
-                ))}
-              </div>
-              <span className="proof-text">
-                Trusted by <strong>60+ plant operators</strong> across 3 facilities
-              </span>
-            </div>
           </div>
 
           {/* ── Widgets ── */}
