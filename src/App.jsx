@@ -533,9 +533,7 @@ export default function App() {
             <h2>Bring Eqnce to the front of your plant workflow.</h2>
           </div>
           <div className="cta-actions">
-            <a className="button strong" href="mailto:hello@eqnce.com">
-              hello@eqnce.com
-            </a>
+           
             <a className="button subtle top-link" href="#top">
               <span className="top-link-arrow">↑</span>
               <span>Back to top</span>
