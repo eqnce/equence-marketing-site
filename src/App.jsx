@@ -303,7 +303,7 @@ function HeroBackground() {
 
 function BrandAffiliation() {
   return (
-    <section className="brand-affiliation-shell" id="brand-affiliation">
+    <section className="brand-affiliation-shell" id="company">
       <div className="affiliation-background-grid" />
       <div className="affiliation-glow-vignette" />
       
