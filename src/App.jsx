@@ -391,7 +391,9 @@ export default function App() {
           </nav>
           <div className="header-actions">
             <a className="button subtle" href="#solutions">View product</a>
-            <a className="button strong" href="#contact">Get started</a>
+            <a className="button strong" href="mailto:bharvi.desai@monx.co.in">
+              bharvi.desai@monx.co.in
+            </a>
           </div>
         </div>
       </header>
@@ -416,7 +418,7 @@ export default function App() {
             </p>
 
             <div className="hero-actions">
-              <a className="button strong large" href="#contact">
+              <a className="button strong large" href="mailto:bharvi.desai@monx.co.in">
                 Start with Eqnce
               </a>
               <a className="button subtle large" href="#how-it-works">
@@ -533,9 +535,6 @@ export default function App() {
             <h2>Bring Eqnce to the front of your plant workflow.</h2>
           </div>
           <div className="cta-actions">
-            <a className="button strong" href="bharvi.desai@monx.co.in">
-             bharvi.desai@monx.co.in
-            </a>
             <a className="button subtle top-link" href="#top">
               <span className="top-link-arrow">↑</span>
               <span>Back to top</span>
