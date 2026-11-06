@@ -1,23 +1,573 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="0" />
-    <title>Eqnce | Operational Workflow Platform</title>
-    <meta
-      name="description"
-      content="Eqnce helps plant teams create workflows, coordinate scheduling, manage approvals, and monitor operational analytics from one calm interface."
-    />
-    <link rel="icon" type="image/svg+xml" href="/eq_black 1.svg" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
-  </html>
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Monx Technology — One-page site</title>
+<link rel="icon" type="image/svg+xml" href="/monx-logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<script src="/react.production.min.js"></script>
+<script src="/react-dom.production.min.js"></script>
+<script src="/monx-plant.js"></script>
+<script src="/dc-runtime.js"></script>
+<meta name="hz:slide-selector" content="[data-canvas-width]"><meta name="hz:canvas-width" content="1440"><meta name="hz:canvas-height" content="6200"></head>
+<body>
+<x-dc>
+
+<div style="font-family: Inter, sans-serif; color: #f3f4f6; background-color: #0a0c10; background-image: radial-gradient(rgba(255,255,255,.045) 1px, transparent 1px); background-size: 24px 24px; padding: 20px 16px 40px; box-sizing: border-box" data-canvas-width="1440" data-canvas-height="6200" data-document-role="page" data-label="monx.technology — One-page site">
+<div class="stack" style="max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; gap: 140px">
+
+<!-- ================= HEADER + HERO ================= -->
+<div class="hero-wrap" style="display: flex; flex-direction: column; gap: 72px">
+<header class="hdr" style="background: rgba(17,20,26,.85); border: 1px solid #22252c; border-radius: 22px; padding: 12px 20px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px">
+<a href="#top" aria-label="Monx Technology home" style="display: flex; align-items: center; gap: 12px; text-decoration: none">
+<img src="/monx-logo.svg" alt="Monx" style="height: 24px; width: auto; display: block; filter: invert(1)">
+<span class="tagline-d" style="font-size: 11px; font-weight: 600; letter-spacing: 1.4px; color: #a3a9b5; border-left: 1px solid #2f333c; padding-left: 12px">TECHNOLOGY</span>
+</a>
+<nav class="nav-d" aria-label="Main" style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 24px; font-size: 15px">
+<a class="navl" href="#products">Products</a>
+<a class="navl" href="#how">How it works</a>
+<a class="navl" href="#measures">Insights</a>
+<a class="navl" href="#regulated">Compliance</a>
+<a class="navl" href="#about">About</a>
+</nav>
+<a class="cta-d" href="#contact" style="background: #ffffff; color: #0a0c10; text-decoration: none; border-radius: 999px; padding: 11px 20px; font-weight: 700; font-size: 15px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Get in touch</a>
+<div class="m-only" style="align-items: center; gap: 8px">
+<a href="#contact" sc-camel-on-click="{{closeMenu}}" style="background: #ffffff; color: #0a0c10; text-decoration: none; border-radius: 999px; padding: 0 16px; font-weight: 700; font-size: 14px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Contact</a>
+<button type="button" class="menu-btn swap" sc-camel-on-click="{{toggleMenu}}" aria-expanded="{{menuOpen}}" aria-label="{{menuLabel}}" style="width: 44px; height: 44px; border-radius: 12px; border: 1px solid #2a2d35; background: {{menuBg}}; color: #ffffff; align-items: center; justify-content: center; cursor: pointer; padding: 0">
+<svg sc-camel-view-box="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="{{menuIcon}}"></path></svg>
+</button>
+</div>
+<nav class="mnav" aria-label="Mobile" style="flex-basis: 100%; flex-direction: column; overflow: hidden; max-height: {{menu.h}}; opacity: {{menu.o}}; margin-top: {{menu.mt}}; transition: max-height .45s cubic-bezier(.2,.8,.2,1), opacity .3s ease, margin-top .3s ease">
+<sc-for list="{{mlinks}}" as="l" hint-placeholder-count="5">
+<a href="{{l.href}}" sc-camel-on-click="{{l.go}}" style="display: flex; justify-content: space-between; align-items: center; min-height: 54px; border-top: 1px solid #22252c; color: #f3f4f6; text-decoration: none; font-size: 18px; font-weight: 600; padding-right: 8px">{{l.label}}<span aria-hidden="true" style="color: #6b7280; font-size: 16px">→</span></a>
+</sc-for>
+</nav>
+</header>
+
+<section id="top" class="hero" style="display: flex; flex-direction: column; align-items: center; gap: 40px">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center">
+<span style="display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: #d1d5db; border: 1px solid #2a2d35; border-radius: 999px; padding: 6px 14px; background: #11141a"><span class="pulse" style="width: 8px; height: 8px; border-radius: 50%; background: #22c55e"></span>Live digital twin</span>
+<h1 class="h1" style="margin: 0; font-size: 84px; line-height: .98; letter-spacing: -4px; font-weight: 800">Your plant, live.</h1>
+<p class="hero-sub" style="margin: 0; font-size: 20px; line-height: 1.5; color: #b4bac5">Digital records. Real-time performance. One ecosystem.</p>
+<div class="hero-ctas" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; padding-top: 4px">
+<a href="#products" style="background: #ffffff; color: #0a0c10; text-decoration: none; border-radius: 999px; padding: 14px 26px; font-weight: 700; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Explore products</a>
+<a href="#contact" style="color: #f3f4f6; text-decoration: none; border: 1px solid #3a3e48; border-radius: 999px; padding: 14px 26px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Get in touch</a>
+</div>
+</div>
+
+<!-- Digital twin stage -->
+<div style="width: 100%; position: relative">
+<div class="twin-box" style="position: relative; width: 100%; border-radius: 28px; overflow: hidden; border: 1px solid #1d2028; background: radial-gradient(ellipse at 50% 35%, #161a22 0%, #0b0d12 70%)">
+<canvas id="monx-twin" class="twin" role="img" aria-label="3D digital twin of a pharmaceutical plant: cleanroom suites, process vessels, granulation, tablet compression, coating, packaging line, QC lab and material movement, streaming live data" style="display: block; width: 100%; cursor: grab"></canvas>
+<sc-for list="{{machines}}" as="m" hint-placeholder-count="4">
+<button type="button" class="mlabel" sc-camel-on-click="{{m.toggle}}" aria-pressed="{{m.pressed}}" aria-label="{{m.aria}}" style="position: absolute; left: {{m.lx}}; top: {{m.ly}}; opacity: {{labelsOn}}; transform: translate(-50%, -100%); font: inherit; font-size: 12px; cursor: pointer; display: inline-flex; align-items: center; gap: 7px; white-space: nowrap; background: rgba(13,15,20,.88); color: #f3f4f6; border: 1px solid {{m.color}}; border-radius: 999px; padding: 7px 12px; min-height: 34px; box-shadow: 0 8px 24px rgba(0,0,0,.45); backdrop-filter: blur(6px)">
+<span style="width: 7px; height: 7px; border-radius: 50%; background: {{m.color}}; flex: none"></span>
+<span style="font-weight: 600">{{m.name}}</span>
+<span class="mhint" style="font-size: 10px; color: #a3a9b5; font-family: 'JetBrains Mono', monospace">{{m.hint}}</span>
+</button>
+</sc-for>
+<span class="eqlabel" style="position: absolute; left: {{eqLabel.x}}; top: {{eqLabel.y}}; opacity: {{labelsOn}}; transform: translate(-50%, -100%); display: inline-flex; align-items: center; gap: 7px; white-space: nowrap; background: rgba(15,23,48,.9); border: 1px solid #3b82f6; border-radius: 999px; padding: 6px 11px; font-size: 11px">
+<img src="/eqnce-logo.svg" alt="Eqnce" style="height: 9px; width: auto; filter: invert(1)">
+<span style="color: #bfdbfe">operator station</span>
+</span>
+<div class="legend" style="position: absolute; left: 18px; bottom: 16px; display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 12px; color: #a3a9b5; pointer-events: none">
+<span style="display: inline-flex; align-items: center; gap: 7px"><span style="width: 8px; height: 8px; border-radius: 50%; background: #22c55e"></span>Running</span>
+<span style="display: inline-flex; align-items: center; gap: 7px"><span style="width: 8px; height: 8px; border-radius: 50%; background: #f97316"></span>Alert</span>
+<span style="display: inline-flex; align-items: center; gap: 7px"><span style="width: 8px; height: 8px; border-radius: 50%; background: #60a5fa"></span>Eqnce records</span>
+<span class="legend-hint" style="color: #6b7280">·</span><span class="legend-hint">Drag to explore · Click a machine</span><span class="m-only" style="color: #c9ccd2; flex-basis: 100%; justify-content: center">Tap a machine to stop it</span>
+</div>
+</div>
+
+<!-- EqnceX live panel -->
+<div class="livepanel" style="background: rgba(17,19,24,.9); border: 1px solid #2f333c; border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 24px 60px rgba(0,0,0,.5), 0 0 0 1px rgba(249,115,22,{{glow}}); backdrop-filter: blur(10px); box-sizing: border-box">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 10px">
+<img src="/eqncex-logo.svg" alt="EqnceX" style="height: 17px; width: auto; filter: invert(1)">
+<span style="font-size: 11px; color: #a3a9b5; font-family: 'JetBrains Mono', monospace">PLANT · {{clock}}</span>
+</div>
+<div style="display: flex; align-items: flex-end; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 10px; font-weight: 700; letter-spacing: 1.2px; color: #a3a9b5">OEE</span>
+<span class="swap" style="font-size: 42px; font-weight: 800; letter-spacing: -2px; line-height: 1; color: {{oeeColor}}">{{oee}}%</span>
+</div>
+<svg sc-camel-view-box="0 0 160 44" aria-hidden="true" style="flex: 1; height: 44px">
+<polyline points="{{spark}}" fill="none" stroke="{{oeeColor}}" stroke-width="2" stroke-linejoin="round"></polyline>
+</svg>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px; border-top: 1px solid #2a2d35; padding-top: 10px; min-height: 92px">
+<sc-for list="{{events3}}" as="e" hint-placeholder-count="3">
+<div class="rise" style="display: flex; align-items: center; gap: 8px; font-size: 12px">
+<span style="flex: none; font-size: 9px; font-weight: 700; letter-spacing: .8px; padding: 2px 6px; border-radius: 5px; background: {{e.bg}}; color: {{e.fg}}">{{e.tag}}</span>
+<span style="color: #e5e7eb; overflow: hidden; text-overflow: ellipsis; white-space: nowrap">{{e.text}}</span>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+</section>
+</div>
+
+<!-- ================= FROM → TO ================= -->
+<section style="display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; flex-direction: column; gap: 12px; text-align: center; align-items: center">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 1.6px; color: #8b919c; font-family: 'JetBrains Mono', monospace">THE SHIFT</span>
+<h2 class="h2" style="margin: 0; font-size: 52px; letter-spacing: -2.4px; line-height: 1.02">From paper to live.</h2>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<sc-for list="{{shifts}}" as="r" hint-placeholder-count="3">
+<div class="lift shift-row" style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px; background: #11141a; border: 1px solid #1f2229; border-radius: 20px; padding: 20px 26px">
+<span class="shift-from" style="flex: 1 1 240px; display: flex; align-items: center; gap: 14px; color: #6b7280; font-size: 19px; font-weight: 600"><span style="width: 34px; height: 34px; border-radius: 10px; background: #181b22; display: flex; align-items: center; justify-content: center; color: #6b7280; font-family: 'JetBrains Mono', monospace; font-size: 13px">{{r.n}}</span><span style="text-decoration: line-through; text-decoration-color: #3a3e48">{{r.from}}</span></span>
+<span class="shift-conn" aria-hidden="true" style="flex: 0 0 120px; height: 2px; position: relative; background: repeating-linear-gradient(90deg, #2f333c 0 6px, transparent 6px 12px)"><span class="dot" style="background: {{r.c}}"></span></span>
+<span class="shift-to" style="flex: 1 1 280px; display: flex; align-items: center; gap: 12px; font-size: 21px; font-weight: 700; letter-spacing: -.4px"><span style="width: 10px; height: 10px; border-radius: 50%; background: {{r.c}}; box-shadow: 0 0 14px {{r.c}}"></span>{{r.to}}</span>
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 1px; color: {{r.c}}; font-family: 'JetBrains Mono', monospace">{{r.by}}</span>
+</div>
+</sc-for>
+</div>
+</section>
+
+<!-- ================= PRODUCT ECOSYSTEM ================= -->
+<section id="products" style="display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; flex-direction: column; gap: 12px; text-align: center; align-items: center">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 1.6px; color: #8b919c; font-family: 'JetBrains Mono', monospace">THE PRODUCTS</span>
+<h2 class="h2" style="margin: 0; font-size: 52px; letter-spacing: -2.4px; line-height: 1.02">One ecosystem. Two products.</h2>
+</div>
+
+<div class="sec eco-stage" style="position: relative; border-radius: 32px; border: 1px solid #1f2229; background: radial-gradient(ellipse at 30% 0%, rgba(59,130,246,.12), transparent 55%), radial-gradient(ellipse at 80% 10%, rgba(249,115,22,.10), transparent 55%), #0e1015; padding: 64px 56px 48px; overflow: hidden">
+<div aria-hidden="true" style="position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px); background-size: 48px 48px; pointer-events: none"></div>
+
+<div class="eco-switch" role="tablist" aria-label="Product" style="position: relative; justify-content: center; margin-bottom: 18px">
+<div style="display: flex; gap: 4px; background: #0a0c10; border: 1px solid #2a2d35; border-radius: 999px; padding: 4px">
+<button role="tab" aria-selected="{{eco.e}}" sc-camel-on-click="{{pickEco0}}" class="swap" style="font: inherit; font-size: 14px; font-weight: 700; cursor: pointer; border: 0; border-radius: 999px; padding: 0 26px; min-height: 44px; background: {{eco.eBg}}; color: {{eco.eFg}}; white-space: nowrap">Eqnce</button>
+<button role="tab" aria-selected="{{eco.x}}" sc-camel-on-click="{{pickEco1}}" class="swap" style="font: inherit; font-size: 14px; font-weight: 700; cursor: pointer; border: 0; border-radius: 999px; padding: 0 26px; min-height: 44px; background: {{eco.xBg}}; color: {{eco.xFg}}; white-space: nowrap">EqnceX</button>
+</div>
+</div>
+<div style="position: relative; display: flex; flex-wrap: wrap; align-items: center; gap: 28px">
+
+<!-- Eqnce tablet -->
+<div id="eqnce" class="eco-tab {{eco.eCls}}" style="flex: 1 1 340px; min-width: 0; max-width: 440px; position: relative">
+<div style="background: #050608; border: 1px solid #2a2d35; border-radius: 30px; padding: 12px; box-shadow: 0 40px 80px rgba(0,0,0,.55), 0 0 60px rgba(59,130,246,.12)">
+<div style="background: #12151b; border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 14px; min-height: 380px; box-sizing: border-box">
+<div style="display: flex; justify-content: space-between; align-items: center">
+<img src="/eqnce-logo.svg" alt="Eqnce" style="height: 15px; width: auto; filter: invert(1)">
+<span style="width: 26px; height: 26px; border-radius: 50%; background: #1e3a8a; color: #bfdbfe; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center">RP</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 3px">
+<span style="font-size: 11px; color: #8b919c; font-family: 'JetBrains Mono', monospace">LC-0417 · ROOM G-02</span>
+<span style="font-size: 17px; font-weight: 700">Line clearance</span>
+</div>
+<div style="height: 5px; background: #22252c; border-radius: 99px; overflow: hidden"><div class="pw" style="height: 100%; width: {{progress}}; background: #3b82f6; border-radius: 99px"></div></div>
+<div style="display: flex; flex-direction: column; gap: 7px">
+<sc-for list="{{rows}}" as="r" hint-placeholder-count="4">
+<div class="swap" style="display: flex; align-items: center; gap: 10px; font-size: 13px; border: 1px solid {{r.border}}; background: {{r.rowBg}}; border-radius: 10px; padding: 9px 11px">
+<span class="swap" style="width: 18px; height: 18px; flex: none; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; background: {{r.bg}}; color: #ffffff; border: 1.5px solid {{r.ring}}">{{r.icon}}</span>
+<span style="flex: 1; color: #e5e7eb">{{r.label}}</span>
+<span style="font-family: 'JetBrains Mono', monospace; color: {{r.valColor}}; font-size: 12px">{{r.val}}</span>
+</div>
+</sc-for>
+</div>
+<div class="swap" style="margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 10px; border-radius: 12px; padding: 11px 13px; background: {{sig.bg}}; border: 1px solid {{sig.border}}">
+<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 10px; font-weight: 700; letter-spacing: 1px; color: {{sig.fg}}">{{sig.label}}</span><span style="font-size: 13px; color: #e5e7eb">{{sig.text}}</span></span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8b919c">{{sig.time}}</span>
+</div>
+</div>
+</div>
+</div>
+
+<!-- EqnceX dashboard -->
+<div id="eqncex" class="eco-dash {{eco.xCls}}" style="flex: 999 1 520px; min-width: 0; position: relative">
+<div style="background: #050608; border: 1px solid #2a2d35; border-radius: 22px; overflow: hidden; box-shadow: 0 40px 90px rgba(0,0,0,.55), 0 0 70px rgba(249,115,22,.10)">
+<div style="display: flex; align-items: center; gap: 8px; padding: 11px 14px; border-bottom: 1px solid #1d2028; background: #0b0d11">
+<span style="width: 10px; height: 10px; border-radius: 50%; background: #2f333c"></span><span style="width: 10px; height: 10px; border-radius: 50%; background: #2f333c"></span><span style="width: 10px; height: 10px; border-radius: 50%; background: #2f333c"></span>
+<img src="/eqncex-logo.svg" alt="EqnceX" style="height: 13px; width: auto; filter: invert(1); margin-left: 10px">
+<span style="margin-left: auto; font-size: 11px; color: #8b919c; font-family: 'JetBrains Mono', monospace">LINE 2 · {{clock}}</span>
+</div>
+<div style="display: flex; background: #12151b">
+<div class="eco-side" aria-hidden="true" style="flex: 0 0 50px; border-right: 1px solid #1d2028; display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 16px 0">
+<span style="width: 22px; height: 22px; border-radius: 7px; background: #f97316"></span><span style="width: 22px; height: 22px; border-radius: 7px; background: #22252c"></span><span style="width: 22px; height: 22px; border-radius: 7px; background: #22252c"></span><span style="width: 22px; height: 22px; border-radius: 7px; background: #22252c"></span>
+</div>
+<div style="flex: 1; min-width: 0; padding: 18px; display: flex; flex-direction: column; gap: 14px">
+<div class="eco-tiles" style="display: flex; flex-wrap: wrap; gap: 10px">
+<sc-for list="{{tiles}}" as="t" hint-placeholder-count="4">
+<div class="swap" style="flex: 1 1 110px; background: #0e1015; border: 1px solid {{t.border}}; border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 10px; font-weight: 700; letter-spacing: 1px; color: #8b919c">{{t.k}}</span>
+<span class="swap" style="font-size: 24px; font-weight: 800; letter-spacing: -1px; color: {{t.c}}">{{t.v}}</span>
+</div>
+</sc-for>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<div style="flex: 1 1 260px; background: #0e1015; border: 1px solid #1d2028; border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 10px; font-weight: 700; letter-spacing: 1px; color: #8b919c">OEE · THIS SHIFT</span>
+<svg sc-camel-view-box="0 0 300 90" aria-hidden="true" style="width: 100%; height: 90px">
+<line x1="0" y1="22" x2="300" y2="22" stroke="#1d2028"></line><line x1="0" y1="52" x2="300" y2="52" stroke="#1d2028"></line>
+<polygon points="{{areaPts}}" fill="{{oeeColor}}" opacity=".12"></polygon>
+<polyline points="{{linePts}}" fill="none" stroke="{{oeeColor}}" stroke-width="2.2" stroke-linejoin="round"></polyline>
+</svg>
+</div>
+<div style="flex: 1 1 200px; background: #0e1015; border: 1px solid #1d2028; border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 10px; font-weight: 700; letter-spacing: 1px; color: #8b919c">TOP LOSSES · MIN</span>
+<sc-for list="{{losses}}" as="l" hint-placeholder-count="4">
+<div style="display: flex; align-items: center; gap: 8px; font-size: 11px">
+<span style="flex: 0 0 74px; color: #c9ccd2">{{l.r}}</span>
+<div style="flex: 1; height: 7px; background: #1d2028; border-radius: 99px; overflow: hidden"><div class="grow" style="height: 100%; width: {{l.w}}; background: {{l.c}}; border-radius: 99px; animation-delay: {{l.d}}"></div></div>
+<span style="flex: 0 0 18px; text-align: right; font-family: 'JetBrains Mono', monospace">{{l.m}}</span>
+</div>
+</sc-for>
+</div>
+</div>
+<div class="swap" style="display: flex; align-items: center; gap: 10px; border-radius: 12px; padding: 10px 12px; font-size: 13px; background: {{toast.bg}}; border: 1px solid {{toast.border}}; color: {{toast.fg}}">
+<span class="pulse" style="width: 8px; height: 8px; border-radius: 50%; background: {{toast.dot}}; flex: none"></span>
+<span>{{toast.text}}</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- connector -->
+<svg class="connector" sc-camel-view-box="0 0 1000 60" sc-camel-preserve-aspect-ratio="none" aria-hidden="true" style="position: relative; width: 100%; height: 60px; margin-top: 10px">
+<path d="M 180 8 C 180 50, 640 10, 640 52" fill="none" stroke="#2f333c" stroke-width="2"></path>
+<path class="flow" d="M 180 8 C 180 50, 640 10, 640 52" fill="none" stroke="#60a5fa" stroke-width="2.2" stroke-linecap="round"></path>
+</svg>
+
+<!-- product identities -->
+<div class="eco-ids" style="position: relative; display: flex; flex-wrap: wrap; gap: 20px; margin-top: 4px">
+<div class="{{eco.eCls}}" style="flex: 1 1 340px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; align-items: baseline; gap: 12px"><img src="/eqnce-logo.svg" alt="Eqnce" style="height: 22px; width: auto; filter: invert(1)"><span style="font-size: 15px; color: #93c5fd; font-weight: 600">Record</span></div>
+<span style="font-size: 22px; font-weight: 700; letter-spacing: -.6px">Paperless shop floor.</span>
+<div style="display: flex; flex-wrap: wrap; gap: 8px"><span style="font-size: 13px; border: 1px solid #1e3a8a; color: #bfdbfe; background: #0f1730; border-radius: 999px; padding: 6px 12px">E-logbooks</span><span style="font-size: 13px; border: 1px solid #1e3a8a; color: #bfdbfe; background: #0f1730; border-radius: 999px; padding: 6px 12px">E-signatures</span><span style="font-size: 13px; border: 1px solid #1e3a8a; color: #bfdbfe; background: #0f1730; border-radius: 999px; padding: 6px 12px">Audit trail</span><span style="font-size: 13px; border: 1px solid #1e3a8a; color: #bfdbfe; background: #0f1730; border-radius: 999px; padding: 6px 12px">Approvals</span></div>
+</div>
+<div class="{{eco.xCls}}" style="flex: 1 1 340px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; align-items: baseline; gap: 12px"><img src="/eqncex-logo.svg" alt="EqnceX" style="height: 26px; width: auto; filter: invert(1)"><span style="font-size: 15px; color: #fdba74; font-weight: 600">Analyse</span></div>
+<span style="font-size: 22px; font-weight: 700; letter-spacing: -.6px">Every loss, visible.</span>
+<div style="display: flex; flex-wrap: wrap; gap: 8px"><span style="font-size: 13px; border: 1px solid #5a2e14; color: #fdba74; background: #1d120b; border-radius: 999px; padding: 6px 12px">OEE</span><span style="font-size: 13px; border: 1px solid #5a2e14; color: #fdba74; background: #1d120b; border-radius: 999px; padding: 6px 12px">Downtime</span><span style="font-size: 13px; border: 1px solid #5a2e14; color: #fdba74; background: #1d120b; border-radius: 999px; padding: 6px 12px">Asset health</span><span style="font-size: 13px; border: 1px solid #5a2e14; color: #fdba74; background: #1d120b; border-radius: 999px; padding: 6px 12px">Alerts</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ================= HOW IT WORKS ================= -->
+<section id="how" style="display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; flex-direction: column; gap: 12px; text-align: center; align-items: center">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 1.6px; color: #8b919c; font-family: 'JetBrains Mono', monospace">HOW IT WORKS</span>
+<h2 class="h2" style="margin: 0; font-size: 52px; letter-spacing: -2.4px; line-height: 1.02">Connect. Calculate. Alert.</h2>
+</div>
+<div class="steps" style="display: flex; flex-wrap: wrap; align-items: stretch; gap: 0">
+<sc-for list="{{steps}}" as="s" hint-placeholder-count="3">
+<div class="step-wrap" style="flex: 1 1 300px; display: flex; align-items: center; min-width: 0">
+<div class="swap step-card" style="flex: 1; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 16px; background: {{s.bg}}; border: 1px solid {{s.border}}; min-height: 200px; box-sizing: border-box">
+<span class="swap" style="width: 46px; height: 46px; border-radius: 14px; display: flex; align-items: center; justify-content: center; background: {{s.iconBg}}; color: {{s.iconFg}}">
+<svg sc-camel-view-box="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{s.icon}}"></path></svg>
+</span>
+<span style="font-size: 26px; font-weight: 800; letter-spacing: -1px">{{s.title}}</span>
+<div class="chips" style="display: flex; flex-wrap: wrap; gap: 6px">
+<sc-for list="{{s.chips}}" as="c" hint-placeholder-count="3"><span style="font-size: 12px; color: #d1d5db; border: 1px solid #2a2d35; border-radius: 999px; padding: 5px 10px; background: #0e1015">{{c}}</span></sc-for>
+</div>
+</div>
+<sc-if value="{{s.arrow}}" hint-placeholder-val="{{ true }}">
+<span class="step-arrow" aria-hidden="true" style="flex: 0 0 36px; height: 2px; position: relative; background: repeating-linear-gradient(90deg, #2f333c 0 5px, transparent 5px 10px)"><span class="dot" style="background: #f97316; width: 8px; height: 8px; top: -3px"></span></span>
+</sc-if>
+</div>
+</sc-for>
+</div>
+</section>
+
+<!-- ================= INSIGHTS ================= -->
+<section id="measures" style="display: flex; flex-direction: column; gap: 36px">
+<div style="display: flex; flex-direction: column; gap: 12px; text-align: center; align-items: center">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 1.6px; color: #8b919c; font-family: 'JetBrains Mono', monospace">EQNCEX INSIGHTS</span>
+<h2 class="h2" style="margin: 0; font-size: 52px; letter-spacing: -2.4px; line-height: 1.02">Five questions. Answered live.</h2>
+</div>
+<div class="kpi-tabs" role="tablist" aria-label="Questions" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px">
+<sc-for list="{{kpiTabs}}" as="k" hint-placeholder-count="5">
+<button role="tab" aria-selected="{{k.on}}" sc-camel-on-click="{{k.pick}}" class="swap" style="font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; border-radius: 999px; padding: 12px 18px; min-height: 44px; border: 1px solid {{k.border}}; background: {{k.bg}}; color: {{k.fg}}">{{k.q}}</button>
+</sc-for>
+</div>
+<div class="kpi-panel" style="background: #11141a; border: 1px solid #1f2229; border-radius: 28px; padding: 32px; display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 10px">
+<span style="font-size: 13px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: #fb923c">{{kpi.area}}</span>
+<span style="font-size: 13px; color: #8b919c">{{kpi.who}}</span>
+</div>
+<div class="kpi-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 12px">
+<sc-for list="{{kpi.items}}" as="it" hint-placeholder-count="5">
+<div class="rise lift" style="background: #0e1015; border: 1px solid #22252c; border-radius: 16px; padding: 18px; display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 17px; font-weight: 700; color: #f3f4f6">{{it.k}}</span>
+<span style="font-size: 13px; color: #a3a9b5; line-height: 1.45">{{it.m}}</span>
+</div>
+</sc-for>
+</div>
+<span style="font-size: 13px; color: #8b919c; display: inline-flex; align-items: center; gap: 8px"><span style="width: 7px; height: 7px; border-radius: 50%; background: #f97316"></span>Any metric can trigger an alert.</span>
+</div>
+</section>
+
+<!-- ================= COMPLIANCE ================= -->
+<section id="regulated" style="display: flex; flex-direction: column; gap: 36px">
+<div style="display: flex; flex-direction: column; gap: 12px; text-align: center; align-items: center">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 1.6px; color: #8b919c; font-family: 'JetBrains Mono', monospace">COMPLIANCE</span>
+<h2 class="h2" style="margin: 0; font-size: 52px; letter-spacing: -2.4px; line-height: 1.02">Audit-ready by design.</h2>
+</div>
+<div class="comp-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px">
+<div class="lift" style="background: #11141a; border: 1px solid #1f2229; border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 10px"><svg sc-camel-view-box="0 0 24 24" width="24" height="24" fill="none" stroke="#93c5fd" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z M8.5 12l2.5 2.5 4.5-5"></path></svg><span style="font-weight: 800; font-size: 20px">21 CFR Part 11</span><span style="font-size: 13px; color: #a3a9b5">FDA e-records &amp; e-signatures</span></div>
+<div class="lift" style="background: #11141a; border: 1px solid #1f2229; border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 10px"><svg sc-camel-view-box="0 0 24 24" width="24" height="24" fill="none" stroke="#93c5fd" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H4z M8 20h8 M12 16v4"></path></svg><span style="font-weight: 800; font-size: 20px">EU Annex 11</span><span style="font-size: 13px; color: #a3a9b5">EU GMP computerised systems</span></div>
+<div class="lift" style="background: #11141a; border: 1px solid #1f2229; border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 10px"><svg sc-camel-view-box="0 0 24 24" width="24" height="24" fill="none" stroke="#93c5fd" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z M14 3v5h5 M9 13h7 M9 17h5"></path></svg><span style="font-weight: 800; font-size: 20px">ALCOA+</span><span style="font-size: 13px; color: #a3a9b5">Data integrity, built in</span></div>
+<div class="lift" style="background: #11141a; border: 1px solid #1f2229; border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 10px"><svg sc-camel-view-box="0 0 24 24" width="24" height="24" fill="none" stroke="#93c5fd" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3 8-8 M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"></path></svg><span style="font-weight: 800; font-size: 20px">GAMP 5</span><span style="font-size: 13px; color: #a3a9b5">Validation support</span></div>
+</div>
+<div class="builtfor" style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px 28px; padding-top: 8px">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 1.4px; color: #8b919c; font-family: 'JetBrains Mono', monospace">BUILT FOR</span>
+<span style="font-size: 18px; font-weight: 700; display: inline-flex; align-items: center; gap: 8px"><span style="width: 8px; height: 8px; border-radius: 50%; background: #f97316"></span>Pharma</span>
+<span style="font-size: 18px; font-weight: 700; color: #c9ccd2">Automotive</span>
+<span style="font-size: 18px; font-weight: 700; color: #c9ccd2">FMCG</span>
+<span style="width: 1px; height: 22px; background: #2a2d35"></span>
+<span style="font-size: 18px; font-weight: 700; color: #c9ccd2">Cloud <span style="color: #4b5160">/</span> On-premise</span>
+</div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about" class="sec" style="background: #11141a; border: 1px solid #1f2229; border-radius: 30px; padding: 56px; display: flex; flex-wrap: wrap; gap: 32px; align-items: center; justify-content: space-between">
+<div style="display: flex; flex-direction: column; gap: 18px; flex: 1 1 420px">
+<img src="/monx-logo.svg" alt="Monx" style="height: 40px; width: auto; align-self: flex-start; filter: invert(1)">
+<h2 class="h2" style="margin: 0; font-size: 42px; letter-spacing: -1.8px; line-height: 1.05">Backed by industry veterans who have seen it all.</h2>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px; flex: 0 1 320px; font-size: 15px; color: #c9ccd2">
+<span style="display: flex; justify-content: space-between; border-bottom: 1px solid #22252c; padding-bottom: 12px"><span style="color: #8b919c">Company</span><span>Monx Technology Pvt Ltd</span></span>
+<span style="display: flex; justify-content: space-between; border-bottom: 1px solid #22252c; padding-bottom: 12px"><span style="color: #8b919c">Founded</span><span>2025</span></span>
+<span style="display: flex; justify-content: space-between; border-bottom: 1px solid #22252c; padding-bottom: 12px"><span style="color: #8b919c">Products</span><span>Eqnce · EqnceX</span></span>
+<a href="#contact" style="font-weight: 600">Join us →</a>
+</div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="sec" style="background: #ffffff; color: #111827; border-radius: 30px; padding: 56px; display: flex; flex-wrap: wrap; gap: 40px">
+<div style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+<h2 class="h2" style="margin: 0; font-size: 48px; letter-spacing: -2.2px; line-height: 1.02">Let's talk about your plant.</h2>
+<a href="mailto:bharvi.desai@monx.co.in" style="font-weight: 700; font-size: 16px; color: #111827">bharvi.desai@monx.co.in</a>
+</div>
+<form style="flex: 1 1 480px; min-width: 0; display: flex; flex-wrap: wrap; gap: 12px">
+<label style="flex: 1 1 200px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600">Name<input type="text" style="font: inherit; font-weight: 400; border: 1px solid #d1d5db; border-radius: 12px; padding: 12px 14px; min-height: 44px; box-sizing: border-box"></label>
+<label style="flex: 1 1 200px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600">Work email<input type="email" style="font: inherit; font-weight: 400; border: 1px solid #d1d5db; border-radius: 12px; padding: 12px 14px; min-height: 44px; box-sizing: border-box"></label>
+<label style="flex: 1 1 200px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600">Company<input type="text" style="font: inherit; font-weight: 400; border: 1px solid #d1d5db; border-radius: 12px; padding: 12px 14px; min-height: 44px; box-sizing: border-box"></label>
+<label style="flex: 1 1 200px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600">Interested in<sc-raw-select style="font: inherit; font-weight: 400; border: 1px solid #d1d5db; border-radius: 12px; padding: 12px 14px; min-height: 44px; box-sizing: border-box; background: #ffffff"><option>Eqnce</option><option>EqnceX</option><option>Both</option><option>Careers or partnership</option></sc-raw-select></label>
+<label style="flex: 1 1 100%; display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600">Message<textarea rows="3" style="font: inherit; font-weight: 400; border: 1px solid #d1d5db; border-radius: 12px; padding: 12px 14px; resize: vertical"></textarea></label>
+<button type="button" class="send" style="font: inherit; font-weight: 700; background: #0a0c10; color: #ffffff; border: 0; border-radius: 999px; padding: 14px 28px; min-height: 44px; cursor: pointer">Send enquiry</button>
+</form>
+</section>
+
+<footer class="foot" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px; font-size: 14px; color: #8b919c; margin-top: -80px">
+<img src="/monx-logo.svg" alt="Monx" style="height: 20px; width: auto; filter: invert(1)">
+<nav aria-label="Footer" style="display: flex; flex-wrap: wrap; gap: 10px 24px">
+<a class="navl" href="#eqnce">Eqnce</a><a class="navl" href="#eqncex">EqnceX</a><a class="navl" href="#regulated">Compliance</a><a class="navl" href="#contact">Contact</a><a class="navl" href="#">LinkedIn</a>
+</nav>
+<span>© Monx Technology Pvt Ltd</span>
+</footer>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;autoplay&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;section&quot;:&quot;Motion&quot;},&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:6200}}">
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.names = ['Granulator', 'Tablet press', 'Coater', 'Blister pack'];
+this.keys = ['granulator', 'press', 'coater', 'blister'];
+const hist = [];
+for (let i = 0; i < 30; i++) hist.push(72 + Math.round(Math.sin(i / 3) * 3 + (i % 4)));
+this.state = {
+tick: 0, kpi: 0, labels: null, hist: hist, menu: false, eco: 0,
+stopped: [false, false, false, false],
+interacted: false,
+events: [
+{ tag: 'EQNCE', text: 'Line clearance signed by QA', bg: '#0f1d40', fg: '#93c5fd' },
+{ tag: 'DATA', text: 'Granulator · batch B-2417 started', bg: '#22252c', fg: '#d1d5db' }
+]
+};
+}
+clockAt(tick) {
+const m = 6 * 60 + 14 + tick;
+const h = Math.floor(m / 60) % 24, mm = m % 60;
+return (h < 10 ? '0' : '') + h + ':' + (mm < 10 ? '0' : '') + mm;
+}
+calcOee(tick, count) {
+const A = Math.max(28, 91 - 22 * count);
+const P = Math.round(83 + Math.sin(tick / 2) * 1.5 - (count ? 5 : 0));
+const Q = tick % 11 === 0 ? 97 : 98;
+return { A: A, P: P, Q: Q, oee: Math.round(A * P * Q / 10000) };
+}
+eventFor(i, nowStopped) {
+const name = this.names[i];
+if (nowStopped) return { tag: 'ALERT', text: name + ' stopped · maintenance notified', bg: '#3a1a0a', fg: '#fdba74' };
+return { tag: 'OK', text: name + ' back running', bg: '#0f2a1a', fg: '#86efac' };
+}
+mountTwin(tries) {
+const el = document.getElementById('monx-twin');
+if (!el || !window.MonxPlant) {
+if ((tries || 0) < 40) this.retry = setTimeout(() => this.mountTwin((tries || 0) + 1), 150);
+return;
+}
+try {
+this.plant = window.MonxPlant.mount(el, { onLabels: (l) => this.setState({ labels: l }) });
+this.plant.setStopped(this.state.stopped);
+} catch (e) { this.plant = null; }
+}
+componentDidMount() {
+this.mountTwin(0);
+const normal = [
+{ tag: 'EQNCE', text: 'Room pressure logged · G-02', bg: '#0f1d40', fg: '#93c5fd' },
+{ tag: 'DATA', text: 'Coater · cycle complete', bg: '#22252c', fg: '#d1d5db' },
+{ tag: 'EQNCE', text: 'Shift handover signed', bg: '#0f1d40', fg: '#93c5fd' },
+{ tag: 'DATA', text: 'Vessel R-2 at setpoint', bg: '#22252c', fg: '#d1d5db' }
+];
+this.timer = setInterval(() => {
+const tick = (this.state.tick || 0) + 1;
+const prev = this.state.stopped;
+let stopped = prev.slice();
+if (!this.state.interacted && (this.props.autoplay ?? true)) {
+const ph = tick % 26;
+stopped = [false, ph >= 12 && ph < 19, false, false];
+}
+let events = this.state.events.slice();
+let changed = false;
+stopped.forEach((v, i) => { if (v !== prev[i]) { events.unshift(this.eventFor(i, v)); changed = true; } });
+if (!changed && tick % 5 === 0) events.unshift(normal[Math.floor(tick / 5) % normal.length]);
+const o = this.calcOee(tick, stopped.filter(Boolean).length);
+const hist = this.state.hist.slice(1).concat([o.oee]);
+this.setState({ tick: tick, stopped: stopped, events: events.slice(0, 4), hist: hist });
+}, 1000);
+}
+componentDidUpdate() {
+if (this.plant) this.plant.setStopped(this.state.stopped);
+}
+componentWillUnmount() {
+clearInterval(this.timer); clearTimeout(this.retry);
+if (this.plant) this.plant.dispose();
+}
+renderVals() {
+const tick = this.state.tick || 0;
+const stopped = this.state.stopped;
+const count = stopped.filter(Boolean).length;
+const green = '#22c55e', orange = '#f97316';
+const labels = this.state.labels;
+const o = this.calcOee(tick, count);
+const oeeColor = count ? orange : '#ffffff';
+
+const machines = this.names.map((name, i) => {
+const isStop = stopped[i];
+const pos = labels && labels[this.keys[i]] ? labels[this.keys[i]] : { x: '50%', y: '50%' };
+return {
+name: name, color: isStop ? orange : green, lx: pos.x, ly: pos.y,
+hint: isStop ? 'STOPPED' : 'RUNNING', pressed: isStop ? 'true' : 'false',
+aria: (isStop ? 'Restart ' : 'Stop ') + name,
+toggle: () => {
+const next = stopped.slice(); next[i] = !next[i];
+this.setState({ stopped: next, interacted: true, events: [this.eventFor(i, next[i])].concat(this.state.events).slice(0, 4) });
+}
+};
+});
+const eqLabel = labels && labels.eqnce ? labels.eqnce : { x: '50%', y: '50%' };
+
+// sparkline + chart
+const hist = this.state.hist;
+const toPts = (w, h, lo, hi) => hist.map((v, i) => (i / (hist.length - 1) * w).toFixed(1) + ',' + (h - (Math.max(lo, Math.min(hi, v)) - lo) / (hi - lo) * h).toFixed(1)).join(' ');
+const spark = toPts(160, 40, 30, 90);
+const linePts = toPts(300, 86, 30, 90);
+const areaPts = '0,90 ' + linePts + ' 300,90';
+
+// Eqnce tablet
+const local = tick % 9;
+const blue = '#3b82f6';
+const rowDefs = [['Previous batch removed', 'Done'], ['Room pressure', '12.4 Pa'], ['Temperature', '22.1 °C'], ['Equipment clean', 'Verified']];
+const rows = rowDefs.map((r, i) => {
+const done = local > i;
+return { label: r[0], val: done ? r[1] : '—', icon: done ? '✓' : '', bg: done ? blue : 'transparent', ring: done ? blue : '#3a3e48', border: done ? 'rgba(59,130,246,.35)' : '#22252c', rowBg: done ? 'rgba(59,130,246,.08)' : 'transparent', valColor: done ? '#f3f4f6' : '#4b5160' };
+});
+let sig = { label: 'E-SIGNATURE', text: 'Awaiting supervisor', time: '—', bg: '#0e1015', border: '#22252c', fg: '#8b919c' };
+if (local >= 5 && local < 7) sig = { label: 'E-SIGNED · SUPERVISOR', text: 'Waiting for QA', time: '06:14', bg: 'rgba(249,115,22,.08)', border: 'rgba(249,115,22,.35)', fg: '#fdba74' };
+if (local >= 7) sig = { label: 'APPROVED · QA', text: 'Record locked', time: '06:31', bg: 'rgba(34,197,94,.08)', border: 'rgba(34,197,94,.35)', fg: '#86efac' };
+
+// EqnceX tiles + toast
+const down = 18 + count * 7 + Math.floor(tick / 20);
+const tiles = [
+{ k: 'OEE', v: o.oee + '%', c: oeeColor, border: count ? 'rgba(249,115,22,.45)' : '#1d2028' },
+{ k: 'RUNNING', v: o.A + '%', c: '#f3f4f6', border: '#1d2028' },
+{ k: 'DOWNTIME', v: down + 'm', c: '#f3f4f6', border: '#1d2028' },
+{ k: 'ALERTS', v: String(count), c: count ? orange : '#f3f4f6', border: count ? 'rgba(249,115,22,.45)' : '#1d2028' }
+];
+const stoppedName = count ? this.names[stopped.indexOf(true)] : '';
+const toast = count
+? { text: 'Alert · ' + stoppedName + ' stopped · maintenance notified', bg: 'rgba(249,115,22,.10)', border: 'rgba(249,115,22,.4)', fg: '#fdba74', dot: orange }
+: { text: 'All lines running · no open alerts', bg: 'rgba(34,197,94,.06)', border: 'rgba(34,197,94,.25)', fg: '#86efac', dot: green };
+const losses = [
+{ r: 'Changeover', w: '88%', m: '42', c: orange, d: '0s' },
+{ r: 'Material wait', w: '58%', m: '27', c: orange, d: '.15s' },
+{ r: 'Short stops', w: '41%', m: '19', c: '#6b7280', d: '.3s' },
+{ r: 'Breakdown', w: '24%', m: '11', c: '#6b7280', d: '.45s' }
+];
+
+const shifts = [
+{ n: '01', from: 'Paper logbooks', to: 'Signed digital records', by: 'EQNCE', c: '#60a5fa' },
+{ n: '02', from: 'Unexplained stoppages', to: 'Every stop explained', by: 'EQNCEX', c: '#f97316' },
+{ n: '03', from: 'Yesterday’s spreadsheet', to: 'Live dashboards & alerts', by: 'EQNCEX', c: '#f97316' }
+];
+
+const stepDefs = [
+{ title: 'Connect', icon: 'M9 7V3 M15 7V3 M6 7h12v4a6 6 0 0 1-12 0z M12 17v4', chips: ['Machines', 'Historians', 'MES', 'ERP', 'Eqnce'] },
+{ title: 'Calculate', icon: 'M4 20V10 M10 20V4 M16 20v-7 M22 20H2', chips: ['OEE', 'Downtime', 'Yield', 'Asset health'] },
+{ title: 'Alert', icon: 'M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9 M10.3 21a1.94 1.94 0 0 0 3.4 0', chips: ['Your limits', 'Your team', 'Instantly'] }
+];
+const active = Math.floor(tick / 3) % 3;
+const steps = stepDefs.map((s, i) => {
+const on = i === active;
+return { title: s.title, icon: s.icon, chips: s.chips, arrow: i < 2, bg: on ? '#15171c' : '#11141a', border: on ? 'rgba(249,115,22,.55)' : '#1f2229', iconBg: on ? orange : '#1d2028', iconFg: on ? '#0a0c10' : '#c9ccd2' };
+});
+
+const kpiDefs = [
+{ area: 'Equipment effectiveness', q: 'Where is time lost?', who: 'Production · OpEx', items: [
+{ k: 'OEE', m: 'Line efficiency' }, { k: 'TEEP', m: 'Efficiency over 24 hours' }, { k: 'Six big losses', m: 'Where time goes' }, { k: 'Speed loss', m: 'Running below rated speed' }, { k: 'Line clearance', m: 'Cleaning time between batches' } ] },
+{ area: 'Asset health', q: 'Which machine is next?', who: 'Maintenance · Engineering', items: [
+{ k: 'Health index', m: 'One score per machine' }, { k: 'Remaining useful life', m: 'Time before attention' }, { k: 'MTBF · MTTR', m: 'Breakdown gap & fix time' }, { k: 'Planned vs unplanned', m: 'Scheduled vs sudden work' }, { k: 'PM compliance', m: 'Maintenance on time' } ] },
+{ area: 'Quality & yield', q: 'Right first time?', who: 'QA · QC · Production', items: [
+{ k: 'Right-first-time', m: 'No rework needed' }, { k: 'Batch yield', m: 'Output vs material in' }, { k: 'Scrap & rework', m: 'Waste and redo' }, { k: 'Deviation rate', m: 'Off-procedure events' }, { k: 'Record review time', m: 'Time to release a batch' } ] },
+{ area: 'Production & flow', q: 'On plan?', who: 'Planning · Production', items: [
+{ k: 'Plan vs actual', m: 'Schedule kept or not' }, { k: 'Throughput', m: 'Output per line' }, { k: 'Cycle time', m: 'Pace per unit' }, { k: 'Batch lead time', m: 'Start to finish' } ] },
+{ area: 'Resources & environment', q: 'What does a batch take?', who: 'Plant heads · EHS', items: [
+{ k: 'Energy per batch', m: 'Energy used per unit or batch' }, { k: 'Excursions', m: 'Temp, humidity, pressure out of range' }, { k: 'Labour productivity', m: 'Output per shift' } ] }
+];
+const kpiIdx = this.state.kpi || 0;
+const kpiTabs = kpiDefs.map((k, i) => {
+const on = i === kpiIdx;
+return { q: k.q, on: on ? 'true' : 'false', bg: on ? '#f97316' : '#11141a', border: on ? '#f97316' : '#2a2d35', fg: on ? '#0a0c10' : '#d1d5db', pick: () => this.setState({ kpi: i }) };
+});
+
+const menuOpen = !!this.state.menu;
+const closeMenu = () => { if (this.state.menu) this.setState({ menu: false }); };
+const mlinks = [['Products', '#products'], ['How it works', '#how'], ['Insights', '#measures'], ['Compliance', '#regulated'], ['About', '#about']].map((l) => ({ label: l[0], href: l[1], go: closeMenu }));
+const ecoI = this.state.eco || 0;
+const eco = {
+e: ecoI === 0 ? 'true' : 'false', x: ecoI === 1 ? 'true' : 'false',
+eBg: ecoI === 0 ? '#3b82f6' : 'transparent', eFg: ecoI === 0 ? '#ffffff' : '#a3a9b5',
+xBg: ecoI === 1 ? '#f97316' : 'transparent', xFg: ecoI === 1 ? '#0a0c10' : '#a3a9b5',
+eCls: ecoI === 0 ? '' : 'eco-off', xCls: ecoI === 1 ? '' : 'eco-off'
+};
+
+return {
+menu: { h: menuOpen ? '360px' : '0px', o: menuOpen ? '1' : '0', mt: menuOpen ? '6px' : '0px' },
+menuOpen: menuOpen ? 'true' : 'false', menuLabel: menuOpen ? 'Close menu' : 'Open menu',
+menuBg: menuOpen ? '#22252c' : '#15171c',
+menuIcon: menuOpen ? 'M6 6l12 12 M18 6L6 18' : 'M4 7h16 M4 12h16 M4 17h10',
+toggleMenu: () => this.setState({ menu: !this.state.menu }), closeMenu: closeMenu, mlinks: mlinks,
+eco: eco, pickEco0: () => this.setState({ eco: 0 }), pickEco1: () => this.setState({ eco: 1 }),
+machines: machines, eqLabel: eqLabel, labelsOn: labels ? '1' : '0',
+oee: o.oee, oeeColor: oeeColor, glow: count ? '.55' : '0', spark: spark,
+events3: this.state.events.slice(0, 3), clock: this.clockAt(tick),
+rows: rows, progress: (Math.min(local, 4) / 4 * 100) + '%', sig: sig,
+tiles: tiles, toast: toast, losses: losses, linePts: linePts, areaPts: areaPts,
+shifts: shifts, steps: steps,
+kpiTabs: kpiTabs, kpi: kpiDefs[kpiIdx]
+};
+}
+}
+</script>
+
+
+</body></html>
